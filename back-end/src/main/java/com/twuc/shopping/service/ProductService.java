@@ -14,15 +14,15 @@ public class ProductService {
 
     private ProductRepository productRepository;
 
-    public ProductService(ProductRepository productRepository){
-        this.productRepository=productRepository;
+    public ProductService(ProductRepository productRepository) {
+        this.productRepository = productRepository;
     }
 
-    public ProductEntity AddProduct(ProductEntity productEntity){
+    public ProductEntity addProduct(ProductEntity productEntity) {
         return productRepository.save(productEntity);
     }
 
-    public List<ProductEntity> ListProduct(){
+    public List<ProductEntity> listProduct() {
         return productRepository.findAll();
     }
 }
