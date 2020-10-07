@@ -7,9 +7,11 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface CartRepository extends CrudRepository<CartEntity, Integer> {
+    List<CartEntity> findAll();
     Optional<CartEntity> findByName(String name);
     @Modifying(clearAutomatically = true)
     @Query(nativeQuery = true,value = "UPDATE cart_entity SET cart_entity.number = :number WHERE cart_entity.`name` = :name ")

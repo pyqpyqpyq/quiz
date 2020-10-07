@@ -41,7 +41,7 @@ public class ProductController {
 //                .unit(productEntity.getUnit())
 //                .build()).collect(Collectors.toList());
 //    }
-    @GetMapping("/product/list")
+    @GetMapping("/products")
     @ResponseStatus(HttpStatus.OK)
     public List<ProductDTO> listAllProducts() {
         List<ProductEntity> productEntities = productService.listProduct();

@@ -7,10 +7,9 @@ import com.twuc.shopping.dto.CartDTO;
 import com.twuc.shopping.entity.CartEntity;
 import com.twuc.shopping.service.CartService;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class CartController {
@@ -28,5 +27,12 @@ public class CartController {
     public void addCart(@RequestBody CartDTO cartDTO){
         CartEntity tempCartEntity = MAPPER.map(cartDTO, CartEntity.class);
         cartService.addToCart(tempCartEntity);
+    }
+
+    @GetMapping("/cart")
+    @ResponseStatus(HttpStatus.OK)
+    public List<CartDTO> listAllCart(){
+        List<CartEntity> cartEntities =cartService.listCart();
+        return MAPPER.map(cartEntities,List.class);
     }
 }
