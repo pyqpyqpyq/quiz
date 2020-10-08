@@ -16,10 +16,12 @@ export default class ProductList extends Component {
       cart: cart,
     });
   }
-  deleteCart(itemName){
-    deleteAPI("http://localhost:8080/cart",itemName) 
-    // this.setState({this.state.cart});
-    //应该怎么样setstatus呢？
+  async deleteCart(itemName){
+    await deleteAPI("http://localhost:8080/cart",itemName) 
+    const cartnew = await getAPI("http://localhost:8080/cart");
+     this.setState({
+      cart: cartnew,
+    })
   }
   render() {
     if (this.state.cart.length === 0) {

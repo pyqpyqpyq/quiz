@@ -32,7 +32,7 @@ export default class  ProductList extends Component{
           <img id="avator" src={item.avatar} alt='avatar'/><br/>
           <label>{item.name}</label><br/>
           <label>单价:{item.price}/{item.unit}</label><br/>
-          <button className="btn btn-primary" onClick={()=>this.addToCart(item)}>添加到购物车</button>
+          <button className="btn btn-primary" onClick={()=>this.addToCart(item)}>添加</button>
       </div>
   )
 
