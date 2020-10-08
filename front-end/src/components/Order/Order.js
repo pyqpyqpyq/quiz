@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
-import { getAPI } from "../API/api";
+import { deleteAPI, getAPI } from "../API/api";
 import { Link } from 'react-router-dom';
-
+import './Order.scss';
 export default class ProductList extends Component {
   state = {
     cart: [
@@ -15,6 +15,11 @@ export default class ProductList extends Component {
     this.setState({
       cart: cart,
     });
+  }
+  deleteCart(itemName){
+    deleteAPI("http://localhost:8080/cart",itemName) 
+    // this.setState({this.state.cart});
+    //应该怎么样setstatus呢？
   }
   render() {
     if (this.state.cart.length === 0) {
@@ -47,14 +52,13 @@ export default class ProductList extends Component {
                   <td>{item.number}</td>
                   <td>{item.unit}</td>
                   <td>
-                    <button onClick>删除</button>
+                    <button className='btn' onClick={()=>this.deleteCart(item.name)}>删除</button>
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
-        <footer>TW Mall @2018 Created by ForCheng</footer>
       </body>
     );
   }

@@ -1,5 +1,6 @@
 import React, { Fragment ,Component} from 'react';
 import { postAPI } from '../API/api';
+import './AddProduct.scss';
 import 'bootstrap/dist/css/bootstrap.css'
 
 export default class AddProduce extends Component {
@@ -17,34 +18,34 @@ export default class AddProduce extends Component {
         </div>
         <div className="form-group">
           <label htmlFor="name" className="col-sm-2">
-            <h4>名称</h4>
+            <h4>名称:</h4>
           </label>
           <input className="form-control" value={this.state.name}
             id="name" onChange={this.filedChange} />
         </div>
         <div className="form-group">
           <label htmlFor="price" className="col-sm-2">
-            <h4>价格</h4>
+            <h4>价格:</h4>
           </label>
           <input className="form-control" value={this.state.price}
             id="price" onChange={this.filedChange} />
         </div>
         <div className="form-group">
           <label htmlFor="unit" className="col-sm-2">
-            <h4>单位</h4>
+            <h4>单位:</h4>
           </label>
           <input className="form-control" value={this.state.unit}
             id="unit" onChange={this.filedChange} />
         </div>
         <div className="form-group">
           <label htmlFor="picUrl" className="col-sm-2">
-            <h4>图片</h4>
+            <h4>图片：</h4>
           </label>
           <input className="form-control" value={this.state.avator}
             id="picUrl" onChange={this.filedChange} />
         </div>
         <div className="form-group" id="submit-btn">
-          <input value="Submit" type="submit" className="btn btn-primary"
+          <input value="提交" type="submit" className="btn btn-primary"
             disabled={this.state.name == '' || this.state.unit == '' || this.state.picUrl == ''} />
         </div>
       </form>

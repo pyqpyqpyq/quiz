@@ -21,4 +21,11 @@ const postAPI = async (url, body) => {
     if (result.status === 201) { alert("添加成功") }
 }
 
-export { getAPI, postAPI }
+const deleteAPI = async (url,name) => {
+    const result = await fetch(`${url}/${name}`, {
+        method: "DELETE",
+    });
+    if (result.status === 204) { alert("删除成功") }
+}
+
+export { getAPI, postAPI,deleteAPI }

@@ -3,6 +3,7 @@ import ProductList from './components/ProductList/ProductList';
 import Order from './components/Order/Order';
 import AddProduct from './components/AddProduct/AddProduct';
 import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer'
 import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
@@ -17,6 +18,8 @@ class App extends Component {
         <Route exact path="/AddProduct" component={AddProduct} />
         <Route path="/" component={ProductList} />
       </Switch>
+      <Footer />
+      {/* 为什么移到外面就没有父元素呢？ */}
     </BrowserRouter>
   );}
 }

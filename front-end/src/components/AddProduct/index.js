@@ -1,1 +1,1 @@
-// export * from './AddProduct';
+export * from './AddProduct';

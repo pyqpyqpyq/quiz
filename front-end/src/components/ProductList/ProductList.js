@@ -2,7 +2,8 @@
 import React, { Fragment ,Component} from 'react';
 import {getAPI} from '../API/api'
 import { postAPI } from '../API/api';
-import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/dist/css/bootstrap.css';
+import './ProductList.scss';
  
 export default class  ProductList extends Component{
   state = {
@@ -28,7 +29,7 @@ export default class  ProductList extends Component{
   render(){
     const result = this.state.products.map(item => 
        <div className="col-md-3">
-          <img id="avator" src={item.avatar}/><br/>
+          <img id="avator" src={item.avatar} alt='avatar'/><br/>
           <label>{item.name}</label><br/>
           <label>单价:{item.price}/{item.unit}</label><br/>
           <button className="btn btn-primary" onClick={()=>this.addToCart(item)}>添加到购物车</button>
@@ -37,7 +38,6 @@ export default class  ProductList extends Component{
 
   return (
     <Fragment>
-      <h1> This is ProductList Page</h1>
       {result}
     </Fragment>
   );
