@@ -32,4 +32,9 @@ public class CartService {
         return cartRepository.findAll();
     }
 
+    @Transactional
+    public void removeCart(String name){
+        cartRepository.deleteByName(name);
+    }
+
 }

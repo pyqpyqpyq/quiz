@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { getAPI } from "../API/api";
+import { Link } from 'react-router-dom';
 
 export default class ProductList extends Component {
   state = {
@@ -9,13 +10,22 @@ export default class ProductList extends Component {
       // { id: 3, number: 3, name: "可乐3", price: 3, unit: "瓶" },
     ],
   };
-  async componentDidMount(){
-    const cart = await getAPI('http://localhost:8080/cart');
+  async componentDidMount() {
+    const cart = await getAPI("http://localhost:8080/cart");
     this.setState({
-      cart: cart
-    })
+      cart: cart,
+    });
   }
   render() {
+    if (this.state.cart.length === 0) {
+      return (
+        <div className="order-no-data">
+          <p>
+            暂无订单，返回<Link to="/">商城页面</Link>继续购买
+          </p>
+        </div>
+      );
+    }
     return (
       <body>
         <div className="order">
@@ -30,20 +40,21 @@ export default class ProductList extends Component {
               </tr>
             </thead>
             <tbody>
-              {this.state.cart.map((item)=>
-              <tr key={item.name}>
-                <td>{item.name}</td>
-                <td>{item.price}</td>
-                <td>{item.number}</td>
-                <td>{item.unit}</td>
-                <td><button onClick>删除</button></td> 
-              </tr>)}
+              {this.state.cart.map((item) => (
+                <tr key={item.name}>
+                  <td>{item.name}</td>
+                  <td>{item.price}</td>
+                  <td>{item.number}</td>
+                  <td>{item.unit}</td>
+                  <td>
+                    <button onClick>删除</button>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
-        <footer>
-        TW Mall @2018 Created by ForCheng
-        </footer>
+        <footer>TW Mall @2018 Created by ForCheng</footer>
       </body>
     );
   }

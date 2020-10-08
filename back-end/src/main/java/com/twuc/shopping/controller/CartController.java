@@ -35,4 +35,10 @@ public class CartController {
         List<CartEntity> cartEntities =cartService.listCart();
         return MAPPER.map(cartEntities,List.class);
     }
+
+    @DeleteMapping("/cart/{name}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteCart(@PathVariable String name){
+       cartService.removeCart(name);
+    }
 }

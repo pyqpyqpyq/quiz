@@ -13,10 +13,8 @@ import java.util.List;
 @AllArgsConstructor
 public class CartEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    private Integer number;
     private String name;
+    private Integer number;
     private Integer price;
     private String unit;
 
