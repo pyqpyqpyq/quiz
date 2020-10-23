@@ -13,6 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 public class CartEntity {
     @Id
+    private Integer id;
     private String name;
     private Integer number;
     private Integer price;

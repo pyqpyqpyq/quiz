@@ -1,7 +1,9 @@
 package com.twuc.shopping.service;
 
 import com.twuc.shopping.entity.CartEntity;
+import com.twuc.shopping.entity.CreateOrderRequestEntity;
 import com.twuc.shopping.repository.CartRepository;
+import com.twuc.shopping.repository.CreateOrderRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,6 +15,7 @@ public class CartService {
 
     private final static Integer ADD_ONE=1;
     private CartRepository cartRepository;
+    private CreateOrderRepository createOrderRepository;
 
     public CartService(CartRepository cartRepository) {
         this.cartRepository = cartRepository;
@@ -37,4 +40,18 @@ public class CartService {
         cartRepository.deleteByName(name);
     }
 
+    @Transactional
+    public void creatOrder(CreateOrderRequestEntity createOrderRequestEntity){
+       Optional<CreateOrderRequestEntity> tempRequest =createOrderRepository.findById(createOrderRequestEntity.getId());
+       if (tempRequest.isPresent()){
+           createOrderRepository.save(createOrderRequestEntity);
+       }
+       else {
+           createOrderRepository.save(createOrderRequestEntity);
+       }
+    }
+
+    public List<CreateOrderRequestEntity> listCreateOrderRequest(){
+        return createOrderRepository.findAll();
+    }
 }
