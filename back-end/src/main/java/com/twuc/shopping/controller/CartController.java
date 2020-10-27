@@ -25,20 +25,19 @@ public class CartController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/cart")
     public void addCart(@RequestBody CartDTO cartDTO){
-        CartEntity tempCartEntity = MAPPER.map(cartDTO, CartEntity.class);
-        cartService.addToCart(tempCartEntity);
+        cartService.createOrder(cartDTO);
     }
+
 
     @GetMapping("/cart")
     @ResponseStatus(HttpStatus.OK)
     public List<CartDTO> listAllCart(){
-        List<CartEntity> cartEntities =cartService.listCart();
-        return MAPPER.map(cartEntities,List.class);
+        return cartService.listCarts();
     }
-
-    @DeleteMapping("/cart/{name}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteCart(@PathVariable String name){
-       cartService.removeCart(name);
-    }
+//
+//    @DeleteMapping("/cart/{name}")
+//    @ResponseStatus(HttpStatus.NO_CONTENT)
+//    public void deleteCart(@PathVariable String name){
+//       cartService.removeCart(name);
+//    }
 }

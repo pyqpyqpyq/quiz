@@ -10,11 +10,6 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 import java.util.Optional;
 
-public interface CartRepository extends CrudRepository<CartEntity, Integer> {
+public interface CartRepository extends CrudRepository<CartEntity, String> {
     List<CartEntity> findAll();
-    Optional<CartEntity> findByName(String name);
-    void deleteByName(String name);
-    @Modifying(clearAutomatically = true)
-    @Query(nativeQuery = true,value = "UPDATE cart_entity SET cart_entity.number = :number WHERE cart_entity.`name` = :name ")
-    void updateNumber(@Param("name") String name,@Param("number") Integer number);
 }

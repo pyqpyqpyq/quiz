@@ -5,21 +5,20 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.Valid;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CartDTO {
-    @Valid
-    @NotEmpty
-    private List<CartProductDTO> cartProductDTOS;
+public class CartProductDTO {
+    @NotNull
+    @Min(1)
+    private Integer number;
 
-    private String id;
-
+    @NotNull
+    private ProductDTO productDTO;
 
 }

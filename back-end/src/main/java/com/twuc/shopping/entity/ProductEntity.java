@@ -1,9 +1,7 @@
 package com.twuc.shopping.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Generated;
-import lombok.NoArgsConstructor;
+import com.twuc.shopping.dto.ProductDTO;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -11,6 +9,8 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
+@Table(name = "product")
 public class ProductEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,6 +24,16 @@ public class ProductEntity {
 //    @JoinColumn(name = "")
 //    private CartEntity cart;
 //
+    public ProductEntity from(ProductDTO productDTO){
+        return ProductEntity
+                .builder()
+                .avatar(productDTO.getAvatar())
+                .id(productDTO.getId())
+                .name(productDTO.getName())
+                .price(productDTO.getPrice())
+                .unit(productDTO.getUnit())
+                .build();
+    }
 }
 
 

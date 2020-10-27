@@ -1,5 +1,6 @@
 package com.twuc.shopping.dto;
 
+import com.twuc.shopping.entity.ProductEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,6 +14,7 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 @Builder
 public class ProductDTO {
+    private Integer id;
     @NotEmpty(message = "name不能为空")
     private String name;
     @NotNull
@@ -21,4 +23,14 @@ public class ProductDTO {
     private String avatar;
     @NotEmpty
     private String unit;
+
+    public static ProductDTO from(ProductEntity productEntity){
+        return ProductDTO.builder()
+                .id(productEntity.getId())
+                .name((productEntity.getName()))
+                .unit(productEntity.getUnit())
+                .price(productEntity.getPrice())
+                .avatar(productEntity.getAvatar())
+                .build();
+    }
 }
